@@ -3,7 +3,7 @@
 These are open for the team to confirm or reverse. Layout-only choices are not listed.
 
 1. **S-statements S1, S3, S4, S5, S6 and S9–S14 were not defined in the brief or in any repo file** (searched `~/fedflow` on all branches, `~/fedflow_data`, `~/fedflow_migration`). I wrote them from verified repo facts; see the full wording in `slides/speaker_notes.md` §22. Please check them, especially **S5** (which sits beside the headline) and **S1** (alt is lowest everywhere).
-2. **S7 reworded.** The brief's text "did not beat reactive routing" contains "beat", which is close to the banned "beats". It now reads "did not give lower mean delay than reactive routing (24.84 ms vs 9.75 ms)".
+2. **S7 kept verbatim** ("did not beat reactive routing on mean delay"): a negation of "beat" is allowed (instruction of 31 Oct 2026). An earlier draft had reworded it.
 3. **Static delay on cell 7511 is 48.3 ms, not the 48.4 in the brief.** The mean of the three rows in `results/experiment_telecom/7511/summary.csv` is 48.322.
 4. **Route flips for cell 8336 reactive = 15** (the brief said "[verify]"). Source: `flip_lines` in `results/experiment_telecom/8336/summary.csv`.
 5. **"UDP loss 0% in every scored run".** One run, 8336 static rep 1, has a server-side "server report count mismatch" and no server loss figure; its client-side loss is 0.0. The slide says "every scored run", and the notes name that run.
@@ -18,3 +18,10 @@ These are open for the team to confirm or reverse. Layout-only choices are not l
 14. **Frame 22 has 14 lines**, which goes past the 5-bullet limit because the brief asks for one line per limit. They are set as a two-column table.
 15. **Title.** The facts block gives no title string, so the title is "FedFlow-LLM" and the research question is the subtitle.
 16. **Figures.** None exist (there is no `figures/` directory). Each figure slot shows a red "figure not yet generated: <name>" box and switches to `../figures/<name>.pdf` or `.png` automatically once the file exists. The figure step should use the same mode colours (RGB values in `main.tex`).
+17. **Verbatim S1–S14 not applied yet.** `tools/required_statements.json` does not exist (searched `~` and every branch). The only other copy, `tools/build_site_data.py` (untracked, another session), holds the brief's S1 and a cut-off S2, with S3–S14 as `None`. Slide 22 and speaker notes §22 still carry the drafted wording until the verbatim text arrives. The brief's S1 ("Each experiment cell replays one 36-step trace three times...") differs from the drafted S1 (alt lowest).
+
+## Checks run on 31 Oct 2026 (for S7, S9, S10, S12)
+
+- **Label masking in `training/client.py`: none.** Both `fit` (line 143) and `evaluate` (line 173) pass `labels=input_ids`. Examples are padded to `MAX_LENGTH` = 256 with `pad_token = eos_token` (lines 40, 48–49, 89), and no label is set to -100. The loss therefore covers the prompt, the answer and the padding tokens, not only the forecast. `evaluate` reuses each client's first 10 training examples. This bears on S12 (training loss is not forecast quality) and on any wording about what the model was trained to predict.
+- **Route flips across repetitions:** counting `FLIP` lines in `results/experiment_telecom/<cell>/raw_<mode>_<rep>_pox.txt` gives identical counts in all 3 reps. 7511: reactive 15/15/15, model 5/5/5. 8336: reactive 15/15/15, model 3/3/3. Static, oracle and alt are 0 in every rep. All equal `flip_lines` in `summary.csv`.
+- **S9 from `results/final_telecom/outputs/forecasts.csv` alone:** 91 windows per cell, all parsed. Onset = last history value (the `persistence` column) ≤ 100 and true 6-step peak > 100; caught = model peak > 100. 7511: 6 of 14 caught, mean (model peak − true peak) −44.04. 8336: 4 of 14, −33.36. Same as `SUMMARY.md`.

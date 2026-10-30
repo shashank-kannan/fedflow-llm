@@ -23,7 +23,7 @@ Source checks done: braces balanced; 26 `frame` environments, and the references
 - Headline on frame 20, together with S2 and S5: **yes**. Repetition check passed on both cells (7511: model max 9.98 < reactive min 15.65; 8336: model max 7.85 < reactive min 13.33), so "lower" is used for both.
 - S7 and S1 on frame 19: **yes**. S8 and the v2 table on frame 21: **yes**. All 14 S-lines on frame 22, with full wording in the notes: **yes**.
 - Each figure keeps its caveat on the same slide: frame 14 (loss ≠ forecast quality), 16 (polling lag), 18 (scaled units, overlapping windows), 20 (S2, S5 and the share of steps written above 100).
-- Banned words ("proves", "significant", "wins", "beats", "outperforms"): searched with `grep -i -E 'prove|significan|\bwins?\b|\bbeat|outperform'` over `main.tex` and `speaker_notes.md`. The only remaining hit is "improved" inside the published title of reference [3], which is not a banned word.
+- Banned words ("proves", "significant", "wins", "beats", "outperforms"): searched with `grep -i -E 'prove|significan|\bwins?\b|\bbeat|outperform'` over `main.tex` and `speaker_notes.md`. Remaining hits: "improved" inside the published title of reference [3], and "did not beat" in S7, a negation that is allowed.
 - Mode colours: static grey, reactive orange, model blue, oracle green, alt purple. They are set once as macros and used in every table and text mention. The colours inside the figure files depend on the figure step.
 - Slide numbers: the Madrid footline shows them.
 - Timing: 27:15 in total (`speaker_notes.md`).

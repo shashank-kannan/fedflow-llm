@@ -136,7 +136,7 @@ Read S2, S5, S3 and S11 aloud; keep the rest for Q&A.
 - **S4** The 3 repetitions replay the same trace and forecasts, so they show repeatability, not variety. (`results/experiment/README.md`)
 - **S5** No statistical test was run. "Lower" only means all 3 model runs were below all 3 reactive runs on that cell.
 - **S6** Telecom MAE was 15.14 against 15.58 for the moving average, and RMSE 24.76 was higher than its 23.95. (`results/final_telecom/outputs/metrics.json`)
-- **S7** On the synthetic data the model's forecasts did not give lower mean delay than reactive routing (24.84 ms vs 9.75 ms). (`results/experiment/summary.csv`)
+- **S7** On the synthetic data the model's forecasts did not beat reactive routing on mean delay (24.84 ms vs 9.75 ms). (`results/experiment/summary.csv`)
 - **S8** The v2 attempt caught more jumps (17 vs 11 pooled onset windows on validation) but raised calm false alarms (16 of 111 vs 4 of 110) and mean error (15.78 vs 15.00). It was not adopted under rules written before the run, and v1 remains the final model. (`~/fedflow_data/compare_v1_v2_val.md`)
 - **S9** The model caught 6 of 14 onsets on 7511 and 4 of 14 on 8336, and under-predicts onset peaks (mean peak error −44.04 and −33.36). (`results/final_telecom/SUMMARY.md`)
 - **S10** Reactive gets the exact previous-step value and the controller polls every 1 s, which makes it a faster reactive baseline than a typical real controller. (`results/experiment/README.md`)

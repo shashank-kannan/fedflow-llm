@@ -393,7 +393,7 @@
     \end{tabular}\\[3pt]
     Mean of 3 runs each. UDP loss 0\% in every scored run.
     \column{0.42\textwidth}
-    \claim{\textbf{S7:} On the synthetic data the model's forecasts did not give lower mean delay than reactive routing (24.84 ms vs 9.75 ms).}\\[4pt]
+    \claim{\textbf{S7:} On the synthetic data the model's forecasts did not beat reactive routing on mean delay (24.84 ms vs 9.75 ms).}\\[4pt]
     \claim{\textbf{S1:} \mAlt{} (never use the 10 Mbps path) had the lowest delay everywhere; here a reroute costs nothing.}
   \end{columns}
   \note{Time 1:30. ``All five modes on three traces. On synthetic data, reactive was lower than the model: 9.75 against 24.84 ms. On both Milan cells, the model was lower than reactive. Always using the alternate path gave the lowest delay everywhere, because in this topology the alternate path is simply faster and has no cost.''
@@ -468,7 +468,7 @@
   S4: The 3 repetitions replay the same trace and forecasts, so they show repeatability, not variety (\src{results/experiment/README.md}).
   S5: No statistical test was run; ``lower'' only means all 3 model runs were below all 3 reactive runs on that cell.
   S6: Telecom MAE 15.14 vs 15.58 for the moving average; RMSE 24.76 is higher than its 23.95 (\src{results/final_telecom/outputs/metrics.json}).
-  S7: On the synthetic data the model did not give lower mean delay than reactive routing (24.84 vs 9.75 ms) (\src{results/experiment/summary.csv}).
+  S7: On the synthetic data the model's forecasts did not beat reactive routing on mean delay (24.84 ms vs 9.75 ms). (\src{results/experiment/summary.csv}).
   S8: see slide 21 (\src{~/fedflow_data/compare_v1_v2_val.md}).
   S9: The model caught 6 of 14 onsets on 7511 and 4 of 14 on 8336, and under-predicts onset peaks (mean peak error -44.04 and -33.36) (\src{results/final_telecom/SUMMARY.md}).
   S10: Reactive gets the exact previous-step value and the controller polls every 1 s, a faster reactive baseline than a typical real controller (\src{results/experiment/README.md}).

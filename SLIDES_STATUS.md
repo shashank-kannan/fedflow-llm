@@ -3,6 +3,7 @@
 > **Not compiled: `pdflatex` and `latexmk` are not installed** (no TeX engine at all on this machine). Nothing was installed.
 > **All 6 figures are missing.** There is no `figures/` directory; each slot shows a visible placeholder.
 > References: **22 verified**, so no `[TO FILL]` gaps.
+> **S1–S14 on slide 22 are still drafts:** `tools/required_statements.json` was not found; see SLIDES_DECISIONS.md item 17.
 
 Started 31 Oct 2026 on `main` at `ea073d9`. Rules kept: wrote only in `slides/`, `SLIDES_STATUS.md` and `SLIDES_DECISIONS.md`; no sudo; no push.
 CLAUDE.md rule 3 (wait for plan OK) was overridden by the task instruction "do not stop for plan approval".
