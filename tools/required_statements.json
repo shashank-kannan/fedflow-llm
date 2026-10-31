@@ -2,7 +2,7 @@
   "S1": "Each experiment cell replays one 36-step trace three times, so the repetitions show repeatability, not variety.",
   "S2": "On both telecom cells the model wrote a value above 100 (alternate path) on more steps than reactive routing did (26 vs 22 steps on cell 7511, 32 vs 28 steps on cell 8336), so part of its delay gain may come from using the faster path more, not from better forecasts.",
   "S3": "UDP packet loss was 0% in every scored run because the 10 Mbps link slowed the sender instead of dropping packets; we did not verify that mechanism, so loss does not separate the modes.",
-  "S4": "The controller logs contain repeated Python AttributeError lines and large numbers of 'using alt path' log lines after route flips (for example 1060 lines for one switch in one step of a quick run). We did not establish the cause. POX kept running and every run completed, and the same controller was used in all experiments, so modes are compared only with each other and absolute numbers are not claimed.",
+  "S4": "The controller logs contain repeated Python AttributeError lines and large numbers of 'using alt path' log lines after route flips (in one switch's log lines from the quick pipeline-test run, 32 lines over four steps, with no timestamps, so they cannot be matched to individual steps). We did not establish the cause. POX kept running and every run completed, and the same controller was used in all experiments, so modes are compared only with each other and absolute numbers are not claimed.",
   "S5": "We did not test whether the forecast's content matters: no experiment replaced the model with a simple forecast that has the same timing.",
   "S6": "The telecom data is from Milan, November 2013, scaled to a unitless load where 100 stands for the 10 Mbps primary link.",
   "S7": "On the synthetic data the model's forecasts did not beat reactive routing on mean delay (24.84 ms vs 9.75 ms).",
@@ -12,5 +12,7 @@
   "S11": "The forecasts used in the experiments came from one training run on a Colab T4 GPU. Run-to-run variation in training was not measured. A local re-run of 20 test windows with the same adapter matched the Colab forecasts on 89 of 120 values (largest difference 4.3); beyond that the effect of different GPUs was not measured, so numbers from different GPUs are not mixed.",
   "S12": "The test block was scored once and the model was not tuned on it.",
   "S13": "All routing results come from an emulated network (Mininet with POX), not a real network.",
-  "S14": "Dataset: Telecom Italia Big Data Challenge, Milan, November 2013, Harvard Dataverse DOI 10.7910/DVN/EGZHFV; attribution and licence terms are in datasets/telecom_milan/NOTICE.md."
+  "S14": "Dataset: Telecom Italia Big Data Challenge, Milan, November 2013, Harvard Dataverse DOI 10.7910/DVN/EGZHFV; attribution and licence terms are in datasets/telecom_milan/NOTICE.md.",
+  "S15": "The model's predicted peaks were below the true peaks on average: mean peak error -44.04 on cell 7511 and -33.36 on cell 8336 (from forecasts.csv).",
+  "S16": "The evaluation step inside training reuses each client's first 10 training examples, so loss reported during training is on training data."
 }

@@ -18,7 +18,9 @@ CLAUDE.md rule 3 (wait for plan OK) is overridden by the task ("do not stop for 
   - Done: 6 figures as PDF + PNG + `.data.csv`, 2 TikZ files in `figures/tikz/`, captions in `figures/captions.json`. Every number is read from `report/generated/numbers.json`, including link rates, threshold and window sizes. Run with `python3 -B` (matplotlib is in user site-packages, which `-I` hides).
 - [x] Phase 3: references (`references/refs.bib`, `verification_log.csv`, `abstracts/`, `lit_table.csv`)
   - Done as far as the instructions go: 24 of 24 usable (`tools/verify_refs.py`), 19 abstracts saved, literature table 10 rows (2021–2026). The citation check (each reference cited at least once) waits for the report text. See REPORT_DECISIONS.md items 10–15.
-- [ ] Phase 4 and later: **instructions not received** (the task text stops mid-sentence in Phase 3, at "Technique and inference come from the abstract you"). Report writing, humanizing and Overleaf packaging wait for the rest of the instructions.
+- [x] Phase 3 addendum: Cons rule applied (`tools/build_lit_table.py`); every table row has a readable abstract
+- [x] Phase 4: fixed statements S1–S16 in `tools/required_statements.json` (fills and deviations: REPORT_DECISIONS.md items 16–21)
+- [ ] Phase 5 and later: **waiting for part 2** of the instructions (report writing, humanizing, Overleaf packaging). Do not start writing before it arrives.
 
 ## Notes
 
