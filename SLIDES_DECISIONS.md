@@ -2,7 +2,7 @@
 
 These are open for the team to confirm or reverse. Layout-only choices are not listed.
 
-1. **S-statements are now verbatim** from `tools/required_statements.json` (user-supplied text, 31 Oct 2026). The drafted S1/S3–S6/S9–S14 used earlier were replaced. Only the one-line slide versions on frame 22 are mine, and they are **drafts awaiting approval**. Slide 21 still shows a shortened S8 (the full S8 is in the frame 22 notes); slide 20 carries S2 and S5 in full.
+1. **S-statements are now verbatim** from `tools/required_statements.json` (user-supplied text, 31 Oct 2026). The drafted S1/S3–S6/S9–S14 used earlier were replaced. Only the one-line slide versions on frame 22 are mine; they were **approved as drafted** on 31 Oct 2026. Slide 21 still shows a shortened S8 (the full S8 is in the frame 22 notes); slide 20 carries S2 and S5 in full.
 2. **S7 kept verbatim** ("did not beat reactive routing on mean delay"): a negation of "beat" is allowed (instruction of 31 Oct 2026). An earlier draft had reworded it.
 3. **Static delay on cell 7511 is 48.3 ms, not the 48.4 in the brief.** The mean of the three rows in `results/experiment_telecom/7511/summary.csv` is 48.322.
 4. **Route flips for cell 8336 reactive = 15** (the brief said "[verify]"). Source: `flip_lines` in `results/experiment_telecom/8336/summary.csv`.

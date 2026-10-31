@@ -129,7 +129,7 @@ The shares are `frac_written_above_100` (0.7222 and 0.6111 on 7511; 0.8889 and 0
 Sources: the literature numbers come from the abstracts of DOIs 10.1109/TMC.2026.3684577, 10.1109/ACCESS.2026.3669215 and 10.1109/JIOT.2026.3708793. The v2 numbers come from `~/fedflow_data/compare_v1_v2_val.md`, outside the repo, written by `training/compare_variants.py` on branch `v2`. That file's decision line is "DO NOT ADOPT".
 
 ## 22 Results 5/5: limits (1:30)
-Read S1, S2, S5 and S11 aloud; keep the rest for Q&A. Wording is verbatim from `tools/required_statements.json`. The slide shows draft one-line versions, which are awaiting approval.
+Read S1, S2, S5 and S11 aloud; keep the rest for Q&A. Wording is verbatim from `tools/required_statements.json`. The slide shows the approved one-line versions.
 - **S1** Each experiment cell replays one 36-step trace three times, so the repetitions show repeatability, not variety. (Source: `results/experiment_telecom/7511/summary.csv`, `results/experiment_telecom/8336/summary.csv`.)
 - **S2** On both telecom cells the model wrote a value above 100 (alternate path) on more steps than reactive routing did (26 vs 22 steps on cell 7511, 32 vs 28 steps on cell 8336), so part of its delay gain may come from using the faster path more, not from better forecasts. (Source: counted from `raw_model_*_steps.csv` and `raw_reactive_*_steps.csv` (value_written > 100) in `results/experiment_telecom/7511/` and `8336/`; identical in all 3 reps.)
 - **S3** UDP packet loss was 0% in every scored run because the 10 Mbps link slowed the sender instead of dropping packets; we did not verify that mechanism, so loss does not separate the modes. (Source: server_udp_loss_pct in the three `summary.csv` files; `results/experiment/README.md`.)
