@@ -5,6 +5,8 @@
 
 \usetheme{Madrid}                        % stock theme; the footline shows slide numbers
 \setbeamertemplate{navigation symbols}{} % hide navigation icons
+% Footer: slide number only, bottom right
+\setbeamertemplate{footline}{\leavevmode\hfill\usebeamercolor[fg]{structure}\scriptsize\insertframenumber\,/\,\inserttotalframenumber\hspace*{4mm}\par\vspace*{2mm}}
 \setbeamertemplate{bibliography item}{[\theenumiv]} % numbered references, no icons
 \usepackage[T1]{fontenc}
 \usepackage{booktabs}
@@ -33,8 +35,13 @@
 
 \title[FedFlow-LLM]{FedFlow-LLM}
 \subtitle{Federated LLM traffic forecasting for predictive rerouting in an emulated SDN}
-\author[{[TEAM MEMBER NAMES]}]{[TEAM MEMBER NAMES]\\[2pt]{\small [ROLL NUMBERS]}}
-\institute[Amrita]{23AID206 Introduction to Computer Networks\\
+\author[Shashank Kannan et al.]{{\footnotesize\begin{tabular}{@{}ll@{}}
+  Shashank Kannan & CB.AI.U4AID125150\\
+  Iniyaa Muthuselvan & CB.AI.U4AID25120\\
+  Anirudh S Nair & CB.AI.U4AID25106\\
+  Akshara Sree R & CB.AI.U4AID25103
+\end{tabular}}}
+\institute[Amrita]{\scriptsize 23AID206 Introduction to Computer Networks\\
   Instructor: Dr.\ Sundaresan S\\
   Amrita School of Artificial Intelligence, Amrita Vishwa Vidyapeetham, Coimbatore}
 \date{}
@@ -98,8 +105,10 @@
 \begin{frame}{Methodology (1/2): system overview}
   \centering
   \begin{tikzpicture}[
-      box/.style={draw, rounded corners, fill=blue!8, align=center, minimum width=3.3cm, minimum height=1.1cm, font=\small},
-      arr/.style={-{Stealth[length=2.5mm]}, thick}, node distance=0.9cm and 0.9cm]
+      box/.style={draw, rounded corners, fill=blue!8, align=center, minimum width=3.0cm, minimum height=1.1cm, font=\footnotesize},
+      arr/.style={-{Stealth[length=2.5mm]}, thick},
+      lab/.style={font=\scriptsize, align=center, above=2pt},
+      node distance=1.3cm and 1.7cm]
     \node[box] (tw) {Milan traffic windows\\12 past $\rightarrow$ 6 future};
     \node[box, right=of tw] (fl) {Federated LoRA\\Flower FedAvg, 6 clients};
     \node[box, right=of fl] (fc) {Forecast\\peak of 6 values};
@@ -109,8 +118,8 @@
     \draw[arr] (tw) -- (fl);
     \draw[arr] (fl) -- (fc);
     \draw[arr] (fc) -- (file);
-    \draw[arr] (file) -- node[above, font=\scriptsize]{polled every 1 s} (pox);
-    \draw[arr] (pox) -- node[above, font=\scriptsize]{flow rules} (mn);
+    \draw[arr] (file) -- node[lab]{polled\\every 1 s} (pox);
+    \draw[arr] (pox) -- node[lab]{flow\\rules} (mn);
   \end{tikzpicture}\\[8pt]
   \footnotesize Data: Telecom Italia, Milan, Nov 2013 \cite{barlacchi2015milan,telecomitalia2015dataverse}; scaled so 100 = 10 Mbps.
   % Source: training/client.py (NUM_CLIENTS=6), controller/reroute_trigger.py (THRESHOLD=100, CHECK_INTERVAL=1.0),
