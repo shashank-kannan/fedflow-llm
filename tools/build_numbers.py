@@ -255,7 +255,8 @@ def sanity(R, F):
     expected value's decimals, equals it."""
     p = lambda d, m, col="ping_mean_ms": R[d][m][col]["mean"]
     facts = [
-        ("7511 static ping ms", p("t7511", "static"), "48.4"), ("7511 reactive ping ms", p("t7511", "reactive"), "16.0"),
+        # 48.3 and 16.1 replace the task's ~48.4 and ~16.0: the user confirmed the computed values on 31 Oct 2026
+        ("7511 static ping ms", p("t7511", "static"), "48.3"), ("7511 reactive ping ms", p("t7511", "reactive"), "16.1"),
         ("7511 model ping ms", p("t7511", "model"), "9.5"), ("7511 oracle ping ms", p("t7511", "oracle"), "0.2"),
         ("7511 alt ping ms", p("t7511", "alt"), "0.2"),
         ("8336 static ping ms", p("t8336", "static"), "58.9"), ("8336 reactive ping ms", p("t8336", "reactive"), "13.9"),

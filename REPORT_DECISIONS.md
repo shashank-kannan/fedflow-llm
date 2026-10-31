@@ -2,7 +2,7 @@
 
 Each item is waiting for the user unless marked resolved.
 
-1. **STOP: two sanity facts differ from the computed values** (Phase 1, `report/generated/sanity.txt`).
+1. **RESOLVED (31 Oct 2026): the user confirmed the computed values 48.3 and 16.1 ms.** Original note: two sanity facts differ from the computed values (Phase 1, `report/generated/sanity.txt`).
    - Cell 7511 static mean ping: computed **48.3219** ms → 48.3; the task expects ~48.4. Runs: 47.38, 49.90, 47.69 (`results/experiment_telecom/7511/summary.csv`).
    - Cell 7511 reactive mean ping: computed **16.0562** ms → 16.1; the task expects ~16.0. Runs: 15.65, 16.09, 16.43 (same file).
    - The other 41 facts pass, including UDP loss 0 in every scored run.
