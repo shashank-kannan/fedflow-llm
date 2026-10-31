@@ -8,6 +8,18 @@
 % Footer: slide number only, bottom right
 \setbeamertemplate{footline}{\leavevmode\hfill\usebeamercolor[fg]{structure}\scriptsize\insertframenumber\,/\,\inserttotalframenumber\hspace*{4mm}\par\vspace*{2mm}}
 \setbeamertemplate{bibliography item}{[\theenumiv]} % numbered references, no icons
+% References: plain black text at a readable size (Madrid otherwise colours them blue and bold)
+\newcommand{\bibsize}{\fontsize{6.5}{7.6}\selectfont}
+\setbeamerfont{bibliography item}{size=\bibsize}
+\setbeamerfont{bibliography entry author}{size=\bibsize, series=\mdseries}
+\setbeamerfont{bibliography entry title}{size=\bibsize}
+\setbeamerfont{bibliography entry location}{size=\bibsize}
+\setbeamerfont{bibliography entry note}{size=\bibsize}
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
 \usepackage[T1]{fontenc}
 \usepackage{booktabs}
 \usepackage{array}
@@ -349,34 +361,35 @@
   Different data, scaling and metrics: rows show where we sit, not a ranking.
 \end{frame}
 
-% ===================== 14 Conclusion =====================
-\begin{frame}{Conclusion}
-  \begin{itemize}
-    \item Built a federated LoRA LLM traffic forecaster
-    \item Its forecast drives a POX reroute in Mininet
-    \item Lowest forecast MAE of three methods
-    \item Milan cells: lower delay than reactive routing
-    \item 3 to 5 times fewer route flips
-  \end{itemize}
+% ===================== 14 Conclusion and future work =====================
+\begin{frame}{Conclusion and future work}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Conclusion}
+    \begin{itemize}\small
+      \item Federated LoRA LLM traffic forecaster built
+      \item Its forecast drives a POX reroute in Mininet
+      \item Lowest forecast MAE of three methods
+      \item Milan cells: lower delay than reactive
+      \item 3 to 5 times fewer route flips
+    \end{itemize}
+    \column{0.48\textwidth}
+    \textbf{Future work}
+    \begin{enumerate}\small
+      \item Moving-average forecast, same timing
+      \item More cells and traces per cell
+      \item A cost on the alternate path
+      \item More runs and a statistical test
+      \item A real SDN testbed
+    \end{enumerate}
+  \end{columns}
 \end{frame}
 
-% ===================== 15 Future work =====================
-\begin{frame}{Future work}
-  \begin{enumerate}
-    \item Moving-average forecast, same timing: does content matter?
-    \item More cells and traces per cell
-    \item A cost on the alternate path
-    \item More runs and a statistical test
-    \item Test on a real SDN testbed
-  \end{enumerate}
-\end{frame}
-
-% ===================== 16 References =====================
-\begin{frame}{References}
+% ===================== 15 References (related work) =====================
+\begin{frame}{References (1/2): related work}
   \begin{multicols}{2}
-  \fontsize{5.5}{6.4}\selectfont % references are shown, not read aloud
   \begin{thebibliography}{99}
-    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+    \setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
     \bibitem{yang2026hfrl} G. Yang \emph{et al.}, ``Hierarchical federated RL for distributed routing with traffic forecasting in large-scale LEO satellite networks,'' \emph{IEEE IoT J.}, 13(18), 2026, doi:10.1109/JIOT.2026.3708793.
     \bibitem{silva2026netlink} N. A. A. Da Silva \emph{et al.}, ``Federated learning approach for edge application of network link classification based on traffic matrices,'' \emph{IEEE Access}, 14, 2026, doi:10.1109/ACCESS.2026.3675110.
     \bibitem{sadeghi2026sdmart} B. MirMohammad Sadeghi, B. Barekatain, ``SDMART: deep federated learning-based cache replacement for distributed SD-NDN over IoT,'' \emph{J. Supercomput.}, 82, 2026, doi:10.1007/s11227-026-08655-7.
@@ -384,11 +397,21 @@
     \bibitem{yuliana2026hybrid} H. Yuliana, Iskandar, Hendrawan, ``A hybrid LSTM-Transformer approach for accurate time series traffic prediction in cellular networks,'' \emph{IEEE Access}, 14, 2026, doi:10.1109/ACCESS.2026.3669215.
     \bibitem{wang2026mobilellm} H. Wang \emph{et al.}, ``MobileLLM: semantic-enhanced LLM for multimodal cellular traffic prediction in urban networks,'' \emph{IEEE Trans. Mobile Comput.}, 25(9), 2026, doi:10.1109/TMC.2026.3684577.
     \bibitem{gao2026prompt} D. Gao \emph{et al.}, ``Prompt-guided LLMs with chain-of-thought reasoning for mixed traffic car-following simulation,'' \emph{Simul. Model. Pract. Theory}, 148, 2026, doi:10.1016/j.simpat.2026.103262.
-    \bibitem{lim2020flsurvey} W. Y. B. Lim \emph{et al.}, ``Federated learning in mobile edge networks: a comprehensive survey,'' \emph{IEEE Commun. Surveys Tuts.}, 22(3), 2020, doi:10.1109/COMST.2020.2986024.
-    \bibitem{trinh2018lstm} H. D. Trinh, L. Giupponi, P. Dini, ``Mobile traffic prediction from raw data using LSTM networks,'' \emph{IEEE PIMRC}, 2018, doi:10.1109/PIMRC.2018.8581000.
+    \bibitem{yang2026dmllm} N. Yang \emph{et al.}, ``Decision-making large language model for wireless communication: a comprehensive survey,'' \emph{IEEE Commun. Surveys Tuts.}, 28, 2026, doi:10.1109/COMST.2025.3614494.
     \bibitem{zhou2025llmtelecom} H. Zhou \emph{et al.}, ``Large language model (LLM) for telecommunications: a comprehensive survey,'' \emph{IEEE Commun. Surveys Tuts.}, 27(3), 2025, doi:10.1109/COMST.2024.3465447.
     \bibitem{rong2025stgllm} Y. Rong \emph{et al.}, ``Edge computing enabled large-scale traffic flow prediction with GPT for 6G,'' \emph{IEEE Trans. Intell. Transp. Syst.}, 26(10), 2025, doi:10.1109/TITS.2024.3456890.
-    \bibitem{yang2026dmllm} N. Yang \emph{et al.}, ``Decision-making large language model for wireless communication: a comprehensive survey,'' \emph{IEEE Commun. Surveys Tuts.}, 28, 2026, doi:10.1109/COMST.2025.3614494.
+    \bibitem{lim2020flsurvey} W. Y. B. Lim \emph{et al.}, ``Federated learning in mobile edge networks: a comprehensive survey,'' \emph{IEEE Commun. Surveys Tuts.}, 22(3), 2020, doi:10.1109/COMST.2020.2986024.
+    \bibitem{trinh2018lstm} H. D. Trinh, L. Giupponi, P. Dini, ``Mobile traffic prediction from raw data using LSTM networks,'' \emph{IEEE PIMRC}, 2018, doi:10.1109/PIMRC.2018.8581000.
+  \end{thebibliography}
+  \end{multicols}
+\end{frame}
+
+% ===================== 16 References (data, methods, tools) =====================
+\begin{frame}{References (2/2): data, methods and tools}
+  \begin{multicols}{2}
+  \begin{thebibliography}{99}
+    \setcounter{enumiv}{12} % continue numbering from the previous slide
+    \setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
     \bibitem{barlacchi2015milan} G. Barlacchi \emph{et al.}, ``A multi-source dataset of urban life in the city of Milan and the Province of Trentino,'' \emph{Sci. Data}, 2, 150055, 2015, doi:10.1038/sdata.2015.55.
     \bibitem{telecomitalia2015dataverse} Telecom Italia, ``Telecommunications -- SMS, Call, Internet -- MI,'' Harvard Dataverse, 2015, doi:10.7910/DVN/EGZHFV.
     \bibitem{mcmahan2017fedavg} B. McMahan \emph{et al.}, ``Communication-efficient learning of deep networks from decentralized data,'' \emph{AISTATS}, PMLR 54, 2017.
