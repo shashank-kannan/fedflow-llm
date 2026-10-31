@@ -1,0 +1,6 @@
+# Copies made 31 Oct 2026 from ~/fedflow_data (val_v1/outputs, val_v2/outputs, compare_v1_v2_val.md). Verify with: sha256sum -c CHECKSUMS.txt
+4fd161f5970a3a479b03a5efb4b3552de6cdc0b3e69ce1885f3f0770012ffbbc  val_v1/val_forecasts.csv
+526505012683644d2abbf4e4874e17e430e794c7c9c9995021abf631d979efa2  val_v1/val_metrics.json
+269fb580b8ad45a7423aae16b81297b71de4b487117cf35c83052d6ddb2f96ae  val_v2/val_forecasts.csv
+e0943c07d8e79542dbdbcc3c1446fdf00aaedab32172bab74e6b80a4c2640c37  val_v2/val_metrics.json
+e3bf71ec9104085f7c17db6ccce86eece111d3511a1bfc6489d47ac2c50733af  compare_v1_v2_val.md

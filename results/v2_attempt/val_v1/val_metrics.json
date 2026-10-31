@@ -1,0 +1,191 @@
+{
+  "windows_used": 276,
+  "parse_failures": 1,
+  "windows_scored": 275,
+  "model": {
+    "mae": 15.000181818181815,
+    "rmse": 25.13236292717084
+  },
+  "persistence": {
+    "mae": 15.801727272727272,
+    "rmse": 27.75486987244516
+  },
+  "moving_avg": {
+    "mae": 15.672389898989898,
+    "rmse": 25.587736942496164
+  },
+  "slope": {
+    "mae": 19.288838009465287,
+    "rmse": 32.01184044824788,
+    "onset": {
+      "onset_windows": 29,
+      "flagged": 8,
+      "recall": 0.27586206896551724,
+      "mean_peak_error": -52.08393416927899
+    }
+  },
+  "per_cell": {
+    "0": {
+      "square_id": 9721,
+      "windows_used": 46,
+      "windows_scored": 46,
+      "model": {
+        "mae": 7.050326086956522,
+        "rmse": 10.441034518264669
+      },
+      "persistence": {
+        "mae": 6.734891304347828,
+        "rmse": 9.783612129696671
+      },
+      "moving_avg": {
+        "mae": 6.619408212560383,
+        "rmse": 8.914880079717776
+      },
+      "slope": {
+        "mae": 7.1657242576264295,
+        "rmse": 9.339616015839042,
+        "onset": {
+          "onset_windows": 1,
+          "flagged": 0,
+          "recall": 0.0,
+          "mean_peak_error": -44.586095571095576
+        }
+      }
+    },
+    "1": {
+      "square_id": 6997,
+      "windows_used": 46,
+      "windows_scored": 45,
+      "model": {
+        "mae": 11.090925925925921,
+        "rmse": 15.598536814097042
+      },
+      "persistence": {
+        "mae": 11.30940740740741,
+        "rmse": 16.32004282401789
+      },
+      "moving_avg": {
+        "mae": 10.730518518518517,
+        "rmse": 14.641849584641248
+      },
+      "slope": {
+        "mae": 12.264715142881805,
+        "rmse": 16.787449059431527,
+        "onset": {
+          "onset_windows": 4,
+          "flagged": 2,
+          "recall": 0.5,
+          "mean_peak_error": -32.9124766899767
+        }
+      }
+    },
+    "2": {
+      "square_id": 8336,
+      "windows_used": 46,
+      "windows_scored": 46,
+      "model": {
+        "mae": 12.052644927536232,
+        "rmse": 17.79831362106037
+      },
+      "persistence": {
+        "mae": 13.876050724637675,
+        "rmse": 20.84170516717292
+      },
+      "moving_avg": {
+        "mae": 13.253562801932377,
+        "rmse": 18.875131195756087
+      },
+      "slope": {
+        "mae": 14.901678152765106,
+        "rmse": 21.604955769999727,
+        "onset": {
+          "onset_windows": 8,
+          "flagged": 1,
+          "recall": 0.125,
+          "mean_peak_error": -54.21434440559442
+        }
+      }
+    },
+    "3": {
+      "square_id": 7511,
+      "windows_used": 46,
+      "windows_scored": 46,
+      "model": {
+        "mae": 14.19974637681159,
+        "rmse": 20.03019156861367
+      },
+      "persistence": {
+        "mae": 16.763369565217385,
+        "rmse": 23.305212555271336
+      },
+      "moving_avg": {
+        "mae": 15.608659420289857,
+        "rmse": 20.511691413967686
+      },
+      "slope": {
+        "mae": 17.43846698591263,
+        "rmse": 23.092593624826403,
+        "onset": {
+          "onset_windows": 4,
+          "flagged": 2,
+          "recall": 0.5,
+          "mean_peak_error": -37.1111247086247
+        }
+      }
+    },
+    "4": {
+      "square_id": 8062,
+      "windows_used": 46,
+      "windows_scored": 46,
+      "model": {
+        "mae": 19.262137681159405,
+        "rmse": 32.946050108527764
+      },
+      "persistence": {
+        "mae": 22.17163043478262,
+        "rmse": 42.202591672083116
+      },
+      "moving_avg": {
+        "mae": 20.566775362318847,
+        "rmse": 34.97766356793286
+      },
+      "slope": {
+        "mae": 26.660713531637455,
+        "rmse": 42.81896535950873,
+        "onset": {
+          "onset_windows": 7,
+          "flagged": 2,
+          "recall": 0.2857142857142857,
+          "mean_peak_error": -70.1045387945388
+        }
+      }
+    },
+    "5": {
+      "square_id": 7584,
+      "windows_used": 46,
+      "windows_scored": 46,
+      "model": {
+        "mae": 26.260326086956535,
+        "rmse": 40.318877932720596
+      },
+      "persistence": {
+        "mae": 23.857355072463772,
+        "rmse": 38.60581967373779
+      },
+      "moving_avg": {
+        "mae": 27.147983091787417,
+        "rmse": 40.305397156905
+      },
+      "slope": {
+        "mae": 37.14903166278166,
+        "rmse": 54.12803389306758,
+        "onset": {
+          "onset_windows": 5,
+          "flagged": 1,
+          "recall": 0.2,
+          "mean_peak_error": -52.261412587412586
+        }
+      }
+    }
+  }
+}
