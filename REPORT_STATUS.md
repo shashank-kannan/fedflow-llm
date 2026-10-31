@@ -14,7 +14,8 @@ CLAUDE.md rule 3 (wait for plan OK) is overridden by the task ("do not stop for 
 - [x] Phase 1: numbers (`tools/build_numbers.py`, `--selftest`, sanity facts, constants, LoRA/loss-token check, `results/v2_attempt/` copies)
   - Built: `--selftest` passes; outputs in `report/generated/` (numbers.json/.tex/.md, sanity.txt); `results/v2_attempt/` copies verified by CHECKSUMS.txt.
   - 2 of 43 sanity facts differed (7511 static 48.3 vs 48.4; reactive 16.1 vs 16.0); the user confirmed the computed values, and all 43 now pass.
-- [ ] Phase 2: figures (`tools/make_figures.py`, 6 matplotlib figures + 2 TikZ, `figures/captions.json`)
+- [x] Phase 2: figures (`tools/make_figures.py`, 6 matplotlib figures + 2 TikZ, `figures/captions.json`)
+  - Done: 6 figures as PDF + PNG + `.data.csv`, 2 TikZ files in `figures/tikz/`, captions in `figures/captions.json`. Every number is read from `report/generated/numbers.json`, including link rates, threshold and window sizes. Run with `python3 -B` (matplotlib is in user site-packages, which `-I` hides).
 - [ ] Phase 3: references (`references/refs.bib`, `verification_log.csv`, `abstracts/`, `lit_table.csv`)
 - [ ] Phase 4 and later: **instructions not received** (the task text stops mid-sentence in Phase 3, at "Technique and inference come from the abstract you"). Report writing, humanizing and Overleaf packaging wait for the rest of the instructions.
 

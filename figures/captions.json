@@ -1,0 +1,10 @@
+{
+ "fig_telecom_delay": "Mean ping delay per routing mode on cells 7511 and 8336 (bars: mean of the runs; whiskers: min to max; n: runs used). Oracle and alt are hatched reference modes. Each label also gives the share of steps on which that mode wrote a value above 100.",
+ "fig_telecom_flips": "Route flips (path changes logged by the POX controller) per run, for each routing mode on cells 7511 and 8336.",
+ "fig_route_timeline": "Cell 7511, run 1: true load and the value the reactive and model modes wrote at each 5 s step. The controller sends traffic on the alternate path while the written value is above 100 (shaded).",
+ "fig_accuracy_overall": "Mean absolute error of the 6-step forecasts on the synthetic and telecom test blocks, for the federated model, repeat-last and a 3-value moving average.",
+ "fig_accuracy_by_cell": "Mean absolute error per Milan cell on the telecom test block, federated model next to repeat-last.",
+ "fig_training_loss": "Training loss after each federated round (aggregated over clients by the Flower server, measured on training examples). It shows that training ran and converged; it is not a measure of forecast quality.",
+ "fig_pipeline": "FedFlow-LLM pipeline: traffic windows train a federated LoRA model on 6 clients; its forecast is written to a file that the POX controller polls to choose a path in the Mininet network.",
+ "fig_topology": "Emulated topology: h1 on s1, h2 on s2; primary path s1-s3-s2 at 10 Mbps and alternate path s1-s4-s2 at 50 Mbps."
+}

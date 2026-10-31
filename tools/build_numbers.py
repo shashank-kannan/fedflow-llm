@@ -148,6 +148,9 @@ def constants():
         "learning_rate": float(grab("training/client.py", r"lr=([\deE.-]+)\)")),
         "local_epochs": int(grab("training/client.py", r"^LOCAL_EPOCHS\s*=\s*(\d+)")),
         "local_batch": int(grab("training/client.py", r"^LOCAL_BATCH_SIZE\s*=\s*(\d+)")),
+        "primary_mbps": int(grab("controller/topo.py", r"addLink\(s1, s3, bw=(\d+)\)")),
+        "alternate_mbps": int(grab("controller/topo.py", r"addLink\(s1, s4, bw=(\d+)\)")),
+        "moving_avg_window": int(grab("training/infer.py", r"sum\(history\[-(\d+):\]\)")),
         "train_examples_telecom": len(read_json("training/data/telecom/traffic_train.json")),
         "train_examples_synthetic": len(read_json("training/data/traffic_train.json")),
     }
@@ -239,6 +242,17 @@ def forecasts():
     return out
 
 
+def route_timeline():
+    """Cell 7511, rep 1: true load and the value reactive and model wrote at each step."""
+    out = {"source": "results/experiment_telecom/7511/raw_{reactive,model}_1_steps.csv"}
+    for mode in ("reactive", "model"):
+        rows = read_csv(f"results/experiment_telecom/7511/raw_{mode}_1_steps.csv")
+        out["step"] = [int(r["step"]) for r in rows]
+        out["true"] = [num(r["true_value"]) for r in rows]  # same trace in both files
+        out[mode] = [num(r["value_written"]) for r in rows]
+    return out
+
+
 def training_loss():
     out = {}
     for label, rel in [("synthetic", "results/final/outputs/loss_history.csv"),
@@ -316,10 +330,10 @@ def sanity(R, F):
 
 # ---------------------------------------------------------------- writers
 
-def write_outputs(c, R, F, L, lines, failed):
+def write_outputs(c, R, F, L, T, lines, failed):
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(OUT, "numbers.json"), "w", encoding="utf-8") as f:
-        json.dump({"constants": c, "routing": R, "forecasts": F, "training_loss": L}, f, indent=1, default=str)
+        json.dump({"constants": c, "routing": R, "forecasts": F, "training_loss": L, "route_timeline": T}, f, indent=1, default=str)
     with open(os.path.join(OUT, "sanity.txt"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + f"\n\nFAILED: {failed}\n")
     # LaTeX macros: letters only in names, so digits are spelled out.
@@ -420,9 +434,9 @@ def main():
     c = constants()
     if c["threshold"] != THRESHOLD:
         sys.exit(f"STOP: controller threshold {c['threshold']} differs from {THRESHOLD}")
-    R, F, L = routing(c), forecasts(), training_loss()
+    R, F, L, T = routing(c), forecasts(), training_loss(), route_timeline()
     lines, failed = sanity(R, F)
-    write_outputs(c, R, F, L, lines, failed)
+    write_outputs(c, R, F, L, T, lines, failed)
     print("\n".join(l for l in lines if l.startswith("FAIL")) or "all sanity facts OK")
     print(f"wrote {OUT}/numbers.json, numbers.tex, numbers.md, sanity.txt; failed facts: {failed}")
     sys.exit(2 if failed else 0)

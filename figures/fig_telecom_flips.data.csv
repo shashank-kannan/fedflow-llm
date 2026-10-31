@@ -1,0 +1,11 @@
+cell,mode,mean_flips,min,max,n_runs
+Cell 7511,static,0.0,0.0,0.0,3
+Cell 7511,reactive,15.0,15.0,15.0,3
+Cell 7511,model,5.0,5.0,5.0,3
+Cell 7511,oracle,0.0,0.0,0.0,3
+Cell 7511,alt,0.0,0.0,0.0,3
+Cell 8336,static,0.0,0.0,0.0,3
+Cell 8336,reactive,15.0,15.0,15.0,3
+Cell 8336,model,3.0,3.0,3.0,3
+Cell 8336,oracle,0.0,0.0,0.0,3
+Cell 8336,alt,0.0,0.0,0.0,3
