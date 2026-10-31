@@ -385,7 +385,7 @@
       \toprule
       Mean ping delay, ms & Synthetic & Cell 7511 & Cell 8336\\ \midrule
       \mStatic & 43.13 & 48.3 & 58.9\\
-      \mReactive & 9.75 & 16.0 & 13.9\\
+      \mReactive & 9.75 & 16.1 & 13.9\\
       \mModel & 24.84 & 9.5 & 7.5\\
       \mOracle & 0.11 & 0.2 & 0.2\\
       \mAlt & 0.11 & 0.2 & 0.2\\
@@ -402,7 +402,7 @@
 
 % ================= 20 Results: telecom delay, flips, headline =================
 \begin{frame}{Results (3/5): telecom delay and route flips}
-  \claim{\textbf{Headline:} On the two Milan cells tested, forecast-driven routing gave lower mean ping delay than reactive routing (9.5 vs 16.0 ms on cell 7511, 7.5 vs 13.9 ms on cell 8336).}
+  \claim{\textbf{Headline:} On the two Milan cells tested, forecast-driven routing gave lower mean ping delay than reactive routing (9.5 vs 16.1 ms on cell 7511, 7.5 vs 13.9 ms on cell 8336).}
   \vspace{2pt}
   \begin{columns}[T]
     \column{0.5\textwidth}\centering
@@ -415,7 +415,7 @@
   \vspace{2pt}
   \claim{\textbf{S2:} On both telecom cells the model wrote a value above 100 (alternate path) on more steps than reactive routing did (26 vs 22 steps on cell 7511, 32 vs 28 steps on cell 8336), so part of its delay gain may come from using the faster path more, not from better forecasts.\\[2pt]
   \textbf{S5:} We did not test whether the forecast's content matters: no experiment replaced the model with a simple forecast that has the same timing.}
-  \note{Time 2:00. ``This is the headline. On both Milan cells, the model mode had lower mean ping delay than reactive: 9.5 against 16.0 ms on 7511, and 7.5 against 13.9 on 8336. On each cell, every model run was below every reactive run. But read the two lines under it. The model wrote a value above 100 on more steps, so it spent more time on the faster path; part of the gain may come from that, not from better forecasts. We did not test whether the forecast's content matters, and there is no statistical test. The model also flipped routes less: 5 and 3 times per run against 15.''
+  \note{Time 2:00. ``This is the headline. On both Milan cells, the model mode had lower mean ping delay than reactive: 9.5 against 16.1 ms on 7511, and 7.5 against 13.9 on 8336. On each cell, every model run was below every reactive run. But read the two lines under it. The model wrote a value above 100 on more steps, so it spent more time on the faster path; part of the gain may come from that, not from better forecasts. We did not test whether the forecast's content matters, and there is no statistical test. The model also flipped routes less: 5 and 3 times per run against 15.''
   Repetition check (ping\_mean\_ms): 7511 model 9.98, 8.90, 9.71 vs reactive 15.65, 16.09, 16.43; 8336 model 7.85, 7.10, 7.52 vs reactive 13.33, 14.61, 13.80. Passed on both cells. Shares are frac\_written\_above\_100 (0.7222, 0.6111, 0.8889, 0.7778) and flips are flip\_lines in \src{results/experiment_telecom/7511/summary.csv} and \src{results/experiment_telecom/8336/summary.csv}.}
 \end{frame}
 
@@ -428,7 +428,7 @@
     Work & Data, setting & Their reported result & Ours & Label\tabularnewline \midrule
     MobileLLM, IEEE TMC 2026 \cite{wang2026mobilellm} & Milan, Trentino, Shanghai; centralised & MAE gains 0.88\%--32.62\% over baselines & MAE 15.14 vs 16.51 repeat-last, 15.58 moving avg. & not like-for-like\tabularnewline
     LSTM-Transformer, IEEE Access 2026 \cite{yuliana2026hybrid} & 23 Bandung cells, KPI data & RMSE 0.9822 & RMSE 24.76 (100 = 10 Mbps) & not like-for-like\tabularnewline
-    Hier.\ fed.\ RL routing, IEEE IoT-J 2026 \cite{yang2026hfrl} & Starlink simulation & lower steady-state latency than DDQN, SP, ELB & \mModel{} 9.5 vs \mReactive{} 16.0 ms (7511) & not like-for-like\tabularnewline
+    Hier.\ fed.\ RL routing, IEEE IoT-J 2026 \cite{yang2026hfrl} & Starlink simulation & lower steady-state latency than DDQN, SP, ELB & \mModel{} 9.5 vs \mReactive{} 16.1 ms (7511) & not like-for-like\tabularnewline
     \bottomrule
   \end{tabular}\\[3pt]
   \begin{columns}[T]
@@ -487,7 +487,7 @@
     \item Synthetic trace: \mReactive{} delay lower than \mModel
     \item Faster-path use may explain part of the gain
   \end{itemize}
-  \note{Time 1:00. ``We built a federated LoRA forecaster, connected it to a POX controller, and measured five routing modes in Mininet on three traces. On the two Milan cells the model mode had lower mean delay than reactive, 9.5 against 16.0 and 7.5 against 13.9 ms. On the synthetic trace it did not, 24.84 against 9.75. Part of the Milan gain may come from simply using the faster path more.''
+  \note{Time 1:00. ``We built a federated LoRA forecaster, connected it to a POX controller, and measured five routing modes in Mininet on three traces. On the two Milan cells the model mode had lower mean delay than reactive, 9.5 against 16.1 and 7.5 against 13.9 ms. On the synthetic trace it did not, 24.84 against 9.75. Part of the Milan gain may come from simply using the faster path more.''
   Sources: as slides 19 and 20 (\src{results/experiment/summary.csv}, \src{results/experiment_telecom/7511/summary.csv}, \src{results/experiment_telecom/8336/summary.csv}).}
 \end{frame}
 

@@ -117,7 +117,7 @@ Each value is the mean of the 3 `ping_mean_ms` rows.
 UDP loss: `server_udp_loss_pct` is 0.0 in every row except 8336 static rep 1, which is "server report count mismatch" and not scored. Its client-side loss is 0.0.
 
 ## 20 Results 3/5: telecom delay, flips, headline (2:00)
-"This is the headline. On both Milan cells, the model mode had lower mean ping delay than reactive: 9.5 against 16.0 ms on 7511, and 7.5 against 13.9 on 8336. On each cell, every model run was below every reactive run. But read the two lines under it. The model wrote a value above 100 on more steps, so it spent more time on the faster path; part of the gain may come from that, not from better forecasts. We did not test whether the forecast's content matters, and there is no statistical test. The model also flipped routes less: 5 and 3 times per run against 15."
+"This is the headline. On both Milan cells, the model mode had lower mean ping delay than reactive: 9.5 against 16.1 ms on 7511, and 7.5 against 13.9 on 8336. On each cell, every model run was below every reactive run. But read the two lines under it. The model wrote a value above 100 on more steps, so it spent more time on the faster path; part of the gain may come from that, not from better forecasts. We did not test whether the forecast's content matters, and there is no statistical test. The model also flipped routes less: 5 and 3 times per run against 15."
 Repetition check (`ping_mean_ms`): it passed on both cells.
 - 7511: model 9.98, 8.90, 9.71; reactive 15.65, 16.09, 16.43
 - 8336: model 7.85, 7.10, 7.52; reactive 13.33, 14.61, 13.80
@@ -146,7 +146,7 @@ Read S1, S2, S5 and S11 aloud; keep the rest for Q&A. Wording is verbatim from `
 - **S14** Dataset: Telecom Italia Big Data Challenge, Milan, November 2013, Harvard Dataverse DOI 10.7910/DVN/EGZHFV; attribution and licence terms are in datasets/telecom_milan/NOTICE.md. (Source: `datasets/telecom_milan/NOTICE.md`, `datasets/telecom_milan/README.md`.)
 
 ## 23 Conclusion (1:00)
-"We built a federated LoRA forecaster, connected it to a POX controller, and measured five routing modes in Mininet on three traces. On the two Milan cells the model mode had lower mean delay than reactive, 9.5 against 16.0 and 7.5 against 13.9 ms. On the synthetic trace it did not, 24.84 against 9.75. Part of the Milan gain may come from simply using the faster path more."
+"We built a federated LoRA forecaster, connected it to a POX controller, and measured five routing modes in Mininet on three traces. On the two Milan cells the model mode had lower mean delay than reactive, 9.5 against 16.1 and 7.5 against 13.9 ms. On the synthetic trace it did not, 24.84 against 9.75. Part of the Milan gain may come from simply using the faster path more."
 Sources: the same as slides 19 and 20.
 
 ## 24 Future work (0:45)
