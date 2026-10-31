@@ -41,3 +41,14 @@ Each item is waiting for the user unless marked resolved.
 19. **RESOLVED (31 Oct 2026): the user chose to keep S11 as written (the 89-of-120 wording).** Deviation, S11: part 1's S11 says the 20-row GPU check "was not carried out". The files show one exists: `~/fedflow_data/local_val/training/outputs/forecasts.csv` re-ran 20 test windows (120 values) with an adapter byte-identical to the Colab one, and 89 of 120 values match (largest difference 4.3). As part 1 instructs, this is reported to the user. Meanwhile S11 holds the wording the user chose for this finding earlier ("wording A", 31 Oct 2026).
 20. **Deviation, headline:** the fixed headline reads "9.5 vs 16.0 ms on cell 7511". The user confirmed the computed 16.1 (item 1), so the report will write 16.1. The claim rule passes on both cells (model max 9.98 < reactive min 15.65; model max 7.85 < reactive min 13.33). The headline is not a key in the S1–S16 file.
 21. **S15 and S16 included as proposed** (delete on request). S15's -44.04 and -33.36 match `numbers.json` (computed from forecasts.csv). S16 matches `training/client.py` line 168 (`self.examples[:10]`).
+
+## Phases 5–8, 31 Oct 2026
+
+22. **Verification gates skipped at the user's request:** the humanizer multiset gate and second pass, `check_report.py`, `overlap_check.py`, the numeric-token audit and the banned-word scan. The humanizer's rules were applied once while writing.
+23. **Template deviations:** `\pagenumbering{arabic}` is added at Chapter 1 (the template stays roman throughout). The template's own straight quotes around the title in the certificate and declaration are kept. The template's commented-out sample lines are removed.
+24. **BATCH_ID (AID-B) is not shown:** the template has no field for it.
+25. **Synthetic delays use 2 decimals** (24.84, 9.75, 43.13, ...) to match S7 and the brief; telecom delays use 1 decimal as the rounding rule says.
+26. **The relative delay reduction (40.6% and 46.2%) is not stated anywhere,** because the headline is the only allowed way to state the positive result.
+27. **Four references without readable abstracts** (Sadeghi, Kalam, Gao, Lv) are cited once in a list of related titles, with no description of their content.
+28. **Publisher shown as "IEEE"** in the literature table, the abbreviation the Crossref record itself gives inside "Institute of Electrical and Electronics Engineers (IEEE)".
+29. **Headline and S2/S5** appear as one paragraph twice: in the Abstract and in Section 4.3.

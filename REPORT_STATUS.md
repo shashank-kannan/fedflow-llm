@@ -20,7 +20,35 @@ CLAUDE.md rule 3 (wait for plan OK) is overridden by the task ("do not stop for 
   - Done as far as the instructions go: 24 of 24 usable (`tools/verify_refs.py`), 19 abstracts saved, literature table 10 rows (2021–2026). The citation check (each reference cited at least once) waits for the report text. See REPORT_DECISIONS.md items 10–15.
 - [x] Phase 3 addendum: Cons rule applied (`tools/build_lit_table.py`); every table row has a readable abstract
 - [x] Phase 4: fixed statements S1–S16 in `tools/required_statements.json` (fills and deviations: REPORT_DECISIONS.md items 16–21)
-- [ ] Phase 5 and later: **waiting for part 2** of the instructions (report writing, humanizing, Overleaf packaging). Do not start writing before it arrives.
+- [x] Phase 5: report written: `report/report_src.tex` rendered by `tools/render_report.py` into `report/main_paste.tex` (one self-contained file; preamble copied verbatim from the template plus tikz, pgfplots, booktabs, tabularx, array; only image is Amrita.jpg; 8 inline figures (6 pgfplots, 2 TikZ), 9 tables, 24 references inline in IEEE style, all cited)
+- [x] Phase 6: humanizer skill found at `~/.claude/skills/synced/.../humanizer` (not loaded in the session skill list). Its rules were applied while writing the prose, in one pass. **The per-paragraph multiset gate, second pass and kept/discarded counts were skipped at the user's request** ("don't run any verification gate"), so no counts exist.
+- [ ] Phase 7: checks **skipped at the user's request** (no check_report.py, no overlap_check.py). Only the renderer's own stops ran: no unresolved placeholder, every \cite key has a verified record, 24 entries, none uncited.
+- [x] Phase 8: delivered `report/main_paste.tex` and `report/PASTE_STEPS.txt`; no zip.
+
+## Compile status
+
+**Not compiled.** No TeX engine is installed here (`pdflatex`, `latexmk`, `tectonic` all missing), so whether it compiles and the page count (target 15–25) are unknown until it is built in Overleaf.
+
+## Commands run (Phases 5–8)
+
+- `python3 -I -B tools/render_report.py` (renders main_paste.tex; stops on unresolved placeholders or unverified cite keys)
+
+## Left to fill in the report
+
+- `[October 2026]` on the title page (MONTH_YEAR was given in brackets, so it stays a visible placeholder).
+- "Submitted for the university examination held on ..." and Place/Date/signatures: template blanks, left as in the template.
+
+## Copy to Windows
+
+`cp report/main_paste.tex /mnt/c/Users/shash/Downloads/main_paste.tex`
+
+## Files created (all phases)
+
+tools/build_numbers.py, tools/make_figures.py, tools/verify_refs.py, tools/build_lit_table.py, tools/render_report.py, tools/required_statements.json (rewritten);
+figures/*.pdf, *.png, *.data.csv, captions.json, tikz/fig_pipeline.tex, tikz/fig_topology.tex;
+references/refs.bib, verification_log.csv, lit_table.csv, abstracts/*.txt;
+report/generated/numbers.json, numbers.tex, numbers.md, sanity.txt; report/report_src.tex, report/main_paste.tex, report/PASTE_STEPS.txt;
+results/v2_attempt/ (copies + CHECKSUMS.txt); templates/report_template/ (unzipped copy); REPORT_STATUS.md, REPORT_DECISIONS.md.
 
 ## Notes
 
