@@ -117,7 +117,7 @@ Each value is the mean of the 3 `ping_mean_ms` rows.
 UDP loss: `server_udp_loss_pct` is 0.0 in every row except 8336 static rep 1, which is "server report count mismatch" and not scored. Its client-side loss is 0.0.
 
 ## 20 Results 3/5: telecom delay, flips, headline (2:00)
-"This is the headline. On both Milan cells, the model mode had lower mean ping delay than reactive: 9.5 against 16.0 ms on 7511, and 7.5 against 13.9 on 8336. On each cell, every model run was below every reactive run. But read the two lines under it. The model wrote a value above 100 on more steps, so it spent more time on the faster path; part of the gain may come from that, not from better forecasts. And there is no statistical test. The model also flipped routes less: 5 and 3 times per run against 15."
+"This is the headline. On both Milan cells, the model mode had lower mean ping delay than reactive: 9.5 against 16.0 ms on 7511, and 7.5 against 13.9 on 8336. On each cell, every model run was below every reactive run. But read the two lines under it. The model wrote a value above 100 on more steps, so it spent more time on the faster path; part of the gain may come from that, not from better forecasts. We did not test whether the forecast's content matters, and there is no statistical test. The model also flipped routes less: 5 and 3 times per run against 15."
 Repetition check (`ping_mean_ms`): it passed on both cells.
 - 7511: model 9.98, 8.90, 9.71; reactive 15.65, 16.09, 16.43
 - 8336: model 7.85, 7.10, 7.52; reactive 13.33, 14.61, 13.80
@@ -129,21 +129,21 @@ The shares are `frac_written_above_100` (0.7222 and 0.6111 on 7511; 0.8889 and 0
 Sources: the literature numbers come from the abstracts of DOIs 10.1109/TMC.2026.3684577, 10.1109/ACCESS.2026.3669215 and 10.1109/JIOT.2026.3708793. The v2 numbers come from `~/fedflow_data/compare_v1_v2_val.md`, outside the repo, written by `training/compare_variants.py` on branch `v2`. That file's decision line is "DO NOT ADOPT".
 
 ## 22 Results 5/5: limits (1:30)
-Read S2, S5, S3 and S11 aloud; keep the rest for Q&A.
-- **S1** Always using the alternate path gave the lowest delay on every trace (0.11 ms synthetic, 0.2 ms on both cells). In this topology a reroute costs nothing. (each `summary.csv`)
-- **S2** On both telecom cells the model wrote a value above 100 (alternate path) on more steps than reactive routing did (72% vs 61% of steps on cell 7511, 89% vs 78% of steps on cell 8336), so part of its delay gain may come from using the faster path more, not from better forecasts. (telecom `summary.csv`)
-- **S3** Only two Milan cells, one 36-step trace each, went through the network. (`datasets/telecom_milan/README.md`)
-- **S4** The 3 repetitions replay the same trace and forecasts, so they show repeatability, not variety. (`results/experiment/README.md`)
-- **S5** No statistical test was run. "Lower" only means all 3 model runs were below all 3 reactive runs on that cell.
-- **S6** Telecom MAE was 15.14 against 15.58 for the moving average, and RMSE 24.76 was higher than its 23.95. (`results/final_telecom/outputs/metrics.json`)
-- **S7** On the synthetic data the model's forecasts did not beat reactive routing on mean delay (24.84 ms vs 9.75 ms). (`results/experiment/summary.csv`)
-- **S8** The v2 attempt caught more jumps (17 vs 11 pooled onset windows on validation) but raised calm false alarms (16 of 111 vs 4 of 110) and mean error (15.78 vs 15.00). It was not adopted under rules written before the run, and v1 remains the final model. (`~/fedflow_data/compare_v1_v2_val.md`)
-- **S9** The model caught 6 of 14 onsets on 7511 and 4 of 14 on 8336, and under-predicts onset peaks (mean peak error −44.04 and −33.36). (`results/final_telecom/SUMMARY.md`)
-- **S10** Reactive gets the exact previous-step value and the controller polls every 1 s, which makes it a faster reactive baseline than a typical real controller. (`results/experiment/README.md`)
-- **S11** A moving-average forecast with the same timing was not run, so we cannot say the forecast's content caused the gain.
-- **S12** The reported training loss reuses training examples, not a held-out set. (`README.md`)
-- **S13** UDP loss was 0% in every scored run, so no loss difference can be shown. (`summary.csv` files)
-- **S14** Mininet on one machine, with traffic scaled so 100 = 10 Mbps; not a real Milan link load. (`datasets/telecom_milan/README.md`)
+Read S1, S2, S5 and S11 aloud; keep the rest for Q&A. Wording is verbatim from `tools/required_statements.json`. The slide shows draft one-line versions, which are awaiting approval.
+- **S1** Each experiment cell replays one 36-step trace three times, so the repetitions show repeatability, not variety. (Source: `results/experiment_telecom/7511/summary.csv`, `results/experiment_telecom/8336/summary.csv`.)
+- **S2** On both telecom cells the model wrote a value above 100 (alternate path) on more steps than reactive routing did (26 vs 22 steps on cell 7511, 32 vs 28 steps on cell 8336), so part of its delay gain may come from using the faster path more, not from better forecasts. (Source: counted from `raw_model_*_steps.csv` and `raw_reactive_*_steps.csv` (value_written > 100) in `results/experiment_telecom/7511/` and `8336/`; identical in all 3 reps.)
+- **S3** UDP packet loss was 0% in every scored run because the 10 Mbps link slowed the sender instead of dropping packets; we did not verify that mechanism, so loss does not separate the modes. (Source: server_udp_loss_pct in the three `summary.csv` files; `results/experiment/README.md`.)
+- **S4** The controller logs contain repeated Python AttributeError lines and large numbers of 'using alt path' log lines after route flips (for example 1060 lines for one switch in one step of a quick run). We did not establish the cause. POX kept running and every run completed, and the same controller was used in all experiments, so modes are compared only with each other and absolute numbers are not claimed. (Source: `results/experiment_telecom/7511/quick/raw_reactive_1_pox.txt`: 1060 `using alt path' lines for switch 2 in step 4 (forecast 106.72), starting at the FLIP on log line 331; 9 AttributeError lines.)
+- **S5** We did not test whether the forecast's content matters: no experiment replaced the model with a simple forecast that has the same timing. (Source: modes in `experiments/run_experiment.py`; ma/persist modes exist on branch baseline-check, not run.)
+- **S6** The telecom data is from Milan, November 2013, scaled to a unitless load where 100 stands for the 10 Mbps primary link. (Source: `datasets/telecom_milan/README.md`.)
+- **S7** On the synthetic data the model's forecasts did not beat reactive routing on mean delay (24.84 ms vs 9.75 ms). (Source: `results/experiment/summary.csv`.)
+- **S8** An attempt to improve the model (v2) caught more jumps (17 vs 11 pooled onset windows on validation) but raised calm false alarms (16 of 111 vs 4 of 110) and mean error (15.78 vs 15.00). It was not adopted under rules written before the run, and v1 remains the final model. The v2 attempt was designed after the v1 test results were known and was judged on a separate validation block. (Source: `~/fedflow_data/compare_v1_v2_val.md`.)
+- **S9** Jump (onset) recall is modest and can be reported only for the telecom cells with at least 10 onset windows; the windows overlap, so they are not independent samples. (Source: `results/final_telecom/outputs/forecasts.csv`: 7511 6 of 14, 8336 4 of 14 onsets caught; other cells under 10 onset windows.)
+- **S10** Training loss shows that training ran and converged. It is not a measure of forecast quality, because in v1 it was computed over every token of the training text, prompt and padding included. (Source: `training/client.py` lines 143 and 173: labels=input_ids, no masking, padding to 256 tokens.)
+- **S11** The forecasts used in the experiments came from one training run on a Colab T4 GPU. Run-to-run variation in training was not measured. A local re-run of 20 test windows with the same adapter matched the Colab forecasts on 89 of 120 values (largest difference 4.3); beyond that the effect of different GPUs was not measured, so numbers from different GPUs are not mixed. (Source: `~/fedflow_data/local_val/training/outputs/forecasts.csv` vs `results/final_telecom/outputs/forecasts.csv`; adapters byte-identical.)
+- **S12** The test block was scored once and the model was not tuned on it. (Source: task statement; not checkable from a single file.)
+- **S13** All routing results come from an emulated network (Mininet with POX), not a real network. (Source: `controller/topo.py`, `controller/reroute_trigger.py`.)
+- **S14** Dataset: Telecom Italia Big Data Challenge, Milan, November 2013, Harvard Dataverse DOI 10.7910/DVN/EGZHFV; attribution and licence terms are in datasets/telecom_milan/NOTICE.md. (Source: `datasets/telecom_milan/NOTICE.md`, `datasets/telecom_milan/README.md`.)
 
 ## 23 Conclusion (1:00)
 "We built a federated LoRA forecaster, connected it to a POX controller, and measured five routing modes in Mininet on three traces. On the two Milan cells the model mode had lower mean delay than reactive, 9.5 against 16.0 and 7.5 against 13.9 ms. On the synthetic trace it did not, 24.84 against 9.75. Part of the Milan gain may come from simply using the faster path more."
@@ -158,4 +158,4 @@ Numbers: none.
 
 ## 27 Q&A / Thank you (0:15)
 "Thank you. We are happy to take questions."
-Likely questions: why alt is lowest (S1), why the synthetic result differs (S7), and whether the gain comes from the forecasts (S2, S11).
+Likely questions: why alt is lowest (slide 19), why the synthetic result differs (S7), and whether the gain comes from the forecasts (S2, S5).

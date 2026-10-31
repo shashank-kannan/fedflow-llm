@@ -2,7 +2,7 @@
 
 These are open for the team to confirm or reverse. Layout-only choices are not listed.
 
-1. **S-statements S1, S3, S4, S5, S6 and S9–S14 were not defined in the brief or in any repo file** (searched `~/fedflow` on all branches, `~/fedflow_data`, `~/fedflow_migration`). I wrote them from verified repo facts; see the full wording in `slides/speaker_notes.md` §22. Please check them, especially **S5** (which sits beside the headline) and **S1** (alt is lowest everywhere).
+1. **S-statements are now verbatim** from `tools/required_statements.json` (user-supplied text, 31 Oct 2026). The drafted S1/S3–S6/S9–S14 used earlier were replaced. Only the one-line slide versions on frame 22 are mine, and they are **drafts awaiting approval**. Slide 21 still shows a shortened S8 (the full S8 is in the frame 22 notes); slide 20 carries S2 and S5 in full.
 2. **S7 kept verbatim** ("did not beat reactive routing on mean delay"): a negation of "beat" is allowed (instruction of 31 Oct 2026). An earlier draft had reworded it.
 3. **Static delay on cell 7511 is 48.3 ms, not the 48.4 in the brief.** The mean of the three rows in `results/experiment_telecom/7511/summary.csv` is 48.322.
 4. **Route flips for cell 8336 reactive = 15** (the brief said "[verify]"). Source: `flip_lines` in `results/experiment_telecom/8336/summary.csv`.
@@ -18,7 +18,9 @@ These are open for the team to confirm or reverse. Layout-only choices are not l
 14. **Frame 22 has 14 lines**, which goes past the 5-bullet limit because the brief asks for one line per limit. They are set as a two-column table.
 15. **Title.** The facts block gives no title string, so the title is "FedFlow-LLM" and the research question is the subtitle.
 16. **Figures.** None exist (there is no `figures/` directory). Each figure slot shows a red "figure not yet generated: <name>" box and switches to `../figures/<name>.pdf` or `.png` automatically once the file exists. The figure step should use the same mode colours (RGB values in `main.tex`).
-17. **Verbatim S1–S14 not applied yet.** `tools/required_statements.json` does not exist (searched `~` and every branch). The only other copy, `tools/build_site_data.py` (untracked, another session), holds the brief's S1 and a cut-off S2, with S3–S14 as `None`. Slide 22 and speaker notes §22 still carry the drafted wording until the verbatim text arrives. The brief's S1 ("Each experiment cell replays one 36-step trace three times...") differs from the drafted S1 (alt lowest).
+17. **Fills made in the verbatim statements** (nothing else changed): S2 step counts 26 vs 22 and 32 vs 28 confirmed from every `raw_*_steps.csv` (unchanged); S4 `[COUNT NOT YET COMPUTED]` → **1060** (7511 quick reactive run, switch 2, step 4); S11 `[SEE VERSION A OR B BELOW]` → wording A (item 18).
+
+18. **S11 uses wording A, and here is why.** The other wording on offer said a GPU check "was not carried out". The files show that one was: `~/fedflow_data/local_val/training/outputs/` holds a local re-run of 20 test windows (120 forecast values) using an adapter byte-identical to the Colab one (`cmp` against `results/final_telecom/outputs/adapter.npz`). Against the Colab `forecasts.csv`, 89 of the 120 values are identical and 31 differ, with a largest difference of 4.3 and a mean absolute difference of 0.265. Wording A reports what the files show and still says the GPU effect was not measured beyond those 20 windows. "RTX 4060" is left out because no output file records the device; the only record is an `nvidia-smi` line in `V2_STATUS.md` on branch `v2`. The v1 and v2 validation forecasts behind S8 also come from the local runs (byte-identical to the `local_val*` copies), while the test numbers and the routing forecasts are from Colab. The deck reports them on separate slides and never compares one with the other.
 
 ## Checks run on 31 Oct 2026 (for S7, S9, S10, S12)
 

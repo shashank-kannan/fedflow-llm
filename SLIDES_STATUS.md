@@ -3,7 +3,7 @@
 > **Not compiled: `pdflatex` and `latexmk` are not installed** (no TeX engine at all on this machine). Nothing was installed.
 > **All 6 figures are missing.** There is no `figures/` directory; each slot shows a visible placeholder.
 > References: **22 verified**, so no `[TO FILL]` gaps.
-> **S1–S14 on slide 22 are still drafts:** `tools/required_statements.json` was not found; see SLIDES_DECISIONS.md item 17.
+> **S1–S14 are verbatim from `tools/required_statements.json`.** The one-line versions on slide 22 are drafts awaiting approval. Slide 20 now holds the full S2 and S5: check for overflow after compiling.
 
 Started 31 Oct 2026 on `main` at `ea073d9`. Rules kept: wrote only in `slides/`, `SLIDES_STATUS.md` and `SLIDES_DECISIONS.md`; no sudo; no push.
 CLAUDE.md rule 3 (wait for plan OK) was overridden by the task instruction "do not stop for plan approval".
@@ -36,7 +36,7 @@ All facts match the repo except the items below; details are in `SLIDES_DECISION
 - 8336 reactive flips = **15**.
 - 8336 static rep 1 has no usable server report.
 - v2 numbers are confirmed, but their source (`~/fedflow_data/compare_v1_v2_val.md`) is outside the repo.
-- S1, S3–S6 and S9–S14 were undefined, so I drafted them.
+- S1–S14 are verbatim (user-supplied); fills in S4 and S11 are described in SLIDES_DECISIONS.md items 17–18.
 - Headline repetition check **passed on both cells**: every model rep is below every reactive rep.
 
 ## References (all 22 checked on 31 Oct 2026)
@@ -109,3 +109,4 @@ Banned-word scan: clean (see CHECK_SLIDES.md).
 - `slides/CHECK_SLIDES.md`
 - `SLIDES_STATUS.md`
 - `SLIDES_DECISIONS.md`
+- `tools/required_statements.json`
